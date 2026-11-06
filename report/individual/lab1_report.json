@@ -1,0 +1,181 @@
+{
+ "seed": 8225,
+ "predictions": {
+  "ml_f1": {
+   "text": "0.85",
+   "time": "15:05:45"
+  },
+  "ml_lr": {
+   "text": "50",
+   "time": "15:05:56"
+  },
+  "dl_curve": {
+   "text": "50",
+   "time": "15:06:25"
+  },
+  "dl_relu": {
+   "text": "50",
+   "time": "15:06:42"
+  },
+  "emb_search": {
+   "text": "50",
+   "time": "15:08:54"
+  },
+  "emb_tricky": {
+   "text": "50",
+   "time": "15:10:13"
+  },
+  "llm_models": {
+   "text": "50",
+   "time": "15:10:22"
+  },
+  "llm_fewshot": {
+   "text": "2",
+   "time": "15:20:44"
+  }
+ },
+ "checks": {
+  "1.1 vectorize": true,
+  "1.2 sigmoid / predict_proba": true,
+  "1.3 train_logreg": true,
+  "1.4 metrics": true,
+  "2.1 build_mlp": true,
+  "2.2 train_mlp": true,
+  "3.1–3.2 cosine / top_k_similar": true,
+  "3.3 knn_predict": true,
+  "4.2–4.3 prompt / parse_label": true,
+  "4.1 + 4.4 call_openai / llm_classify_batch": true
+ },
+ "experiments": [
+  {
+   "key": "ml_f1",
+   "time": "15:05:45"
+  },
+  {
+   "key": "ml_lr",
+   "time": "15:05:56"
+  },
+  {
+   "key": "dl_curve",
+   "time": "15:06:25"
+  },
+  {
+   "key": "dl_relu",
+   "time": "15:06:42"
+  },
+  {
+   "key": "emb_search",
+   "time": "15:08:54"
+  },
+  {
+   "key": "emb_tricky",
+   "time": "15:10:13"
+  },
+  {
+   "key": "llm_models",
+   "time": "15:10:22"
+  },
+  {
+   "key": "llm_fewshot",
+   "time": "15:20:46"
+  }
+ ],
+ "results": {
+  "1. BoW + LogReg (tự code)": {
+   "accuracy": 0.9767741935483871,
+   "precision": 0.9875,
+   "recall": 0.8229166666666666,
+   "f1": 0.8977272727272727,
+   "f1_SUB": 0.8571428571428571,
+   "train_s": 9.493637097999908,
+   "msg_per_s": 12057.871685148355,
+   "p50_ms": 0.048470000024281035,
+   "p95_ms": 0.12342789995045668,
+   "usd_per_1k": 0.0
+  },
+  "2. BoW + MLP (deep learning)": {
+   "accuracy": 0.9858064516129033,
+   "precision": 0.9885057471264368,
+   "recall": 0.8958333333333334,
+   "f1": 0.9398907103825137,
+   "f1_SUB": 0.9189189189189189,
+   "train_s": 16.043505030999995,
+   "msg_per_s": 15228.425697710847,
+   "p50_ms": 0.24323900004219468,
+   "p95_ms": 2.368948249898039,
+   "usd_per_1k": 0.0
+  },
+  "3a. Encoder (MiniLM) + kNN": {
+   "accuracy": 0.9780645161290322,
+   "precision": 0.8761904761904762,
+   "recall": 0.9583333333333334,
+   "f1": 0.9154228855721392,
+   "f1_SUB": 1.0,
+   "train_s": 84.46026715100015,
+   "msg_per_s": 27.234877165310447,
+   "p50_ms": 65.22216549979021,
+   "p95_ms": 121.59597964973727,
+   "usd_per_1k": 0.0
+  },
+  "3b. Encoder (MiniLM) + LogReg": {
+   "accuracy": 0.9935483870967742,
+   "precision": 0.9789473684210527,
+   "recall": 0.96875,
+   "f1": 0.9738219895287958,
+   "f1_SUB": 1.0,
+   "train_s": 84.92000977199996,
+   "msg_per_s": 36.42601612947309,
+   "p50_ms": 26.35989200007316,
+   "p95_ms": 32.424757100125134,
+   "usd_per_1k": 0.0
+  },
+  "3c. Encoder (MiniLM) + MLP head": {
+   "accuracy": 0.9870967741935484,
+   "precision": 0.9574468085106383,
+   "recall": 0.9375,
+   "f1": 0.9473684210526315,
+   "f1_SUB": 0.9743589743589743,
+   "train_s": 85.70822439899985,
+   "msg_per_s": 35.16928132557081,
+   "p50_ms": 27.44788200016046,
+   "p95_ms": 34.68041515013738,
+   "usd_per_1k": 0.0
+  },
+  "4a. LLM nhỏ zero-shot": {
+   "accuracy": 0.825,
+   "precision": 0.9333333333333333,
+   "recall": 0.7,
+   "f1": 0.8,
+   "f1_SUB": 0.8,
+   "train_s": 0.0,
+   "msg_per_s": 0.14434693618519584,
+   "p50_ms": 6139.118555499863,
+   "p95_ms": 12447.477096500023,
+   "usd_per_1k": 0.0
+  },
+  "4b. LLM lớn zero-shot": {
+   "accuracy": 0.95,
+   "precision": 0.95,
+   "recall": 0.95,
+   "f1": 0.9500000000000001,
+   "f1_SUB": 0.9500000000000001,
+   "train_s": 0.0,
+   "msg_per_s": 0.13557290768552394,
+   "p50_ms": 5267.650066499982,
+   "p95_ms": 13620.193173149924,
+   "usd_per_1k": 0.0
+  },
+  "4c. LLM nhỏ few-shot": {
+   "accuracy": 0.9,
+   "precision": 1.0,
+   "recall": 0.8,
+   "f1": 0.888888888888889,
+   "f1_SUB": 0.888888888888889,
+   "train_s": 0.0,
+   "msg_per_s": 0.15805142112613257,
+   "p50_ms": 5143.048687499913,
+   "p95_ms": 15144.613456700357,
+   "usd_per_1k": 0.0
+  }
+ }
+}
